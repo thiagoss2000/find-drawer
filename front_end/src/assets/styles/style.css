@@ -12,8 +12,10 @@
 
   -webkit-tap-highlight-color: transparent;
 
-  --theme: #3383FF;
-  --theme-light: #33A2FF;
+  --theme: #444;
+  --theme-black: #333;
+  --theme-light: #888;
+  --theme-back: #fff;
   --error: #ff2828;
 }
 

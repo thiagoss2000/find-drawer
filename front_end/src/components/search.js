@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../temp/context";
 
 export default function SearchContain() {
-  const { listDrawers, setListDrawers, setListView, setPage } = useContext(AuthContext);
+  const { listDrawers, setListView, setPage } = useContext(AuthContext);
 
     return (
       <>

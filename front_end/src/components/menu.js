@@ -33,7 +33,7 @@ export default function Menu() {
 const Menubar = styled.div`
   width: 20%;
   height: 100%;
-  background-color: #555;
+  background-color: var(--theme);
   position: absolute;
   right: 0;
   top: 0;
@@ -55,13 +55,13 @@ const Menubar = styled.div`
 const Remain = styled.div`
   width: 80%;
   height: 40%;
-  background-color: #333;
+  background-color: var(--theme-black);
   border-radius: 10px;
   margin-top: 20%;
   .remains {
     width: 80%;
     margin-top: 2px;
-    background-color: white;
+    background-color: var(--theme-back);;
     border: none;
     border-radius: 5px;
   }
@@ -77,7 +77,7 @@ const Remain = styled.div`
 const TopItens = styled.div`
   width: 80%;
   height: 40%;
-  background-color: #333;
+  background-color: var(--theme-black);
   border-radius: 10px;
   margin-top: 10%;
   h2{

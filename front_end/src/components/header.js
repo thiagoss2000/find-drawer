@@ -11,8 +11,8 @@ export default function Header() {
 
   return (
     <DivHeader>
-      <button className="group">Groups</button>
-      <button>Drawers</button>
+      <button onClick={() => setPage("group")}>Groups</button>
+      <button onClick={() => setPage("table")}>Tables</button>
       <button onClick={() => setPage("insert")}>New</button>
       <h2>{userName}</h2>
       <button onClick={() => {logout(); setReload(!reload)}} className="logout"><MdLogout className="iconLogout"/></button>
@@ -23,11 +23,12 @@ export default function Header() {
 const DivHeader = styled.div`
   width: 100%;
   height: 5%;
-  background-color: #444;
+  background-color: var(--theme);
   display: flex;
   align-items: center;
   position: relative;
   z-index: 1;
+  border: 1px solid var(--theme-black);
   button {
     width: 10%;
     height: 80%;

@@ -75,8 +75,7 @@ const View = styled.div`
     margin: auto;
     width: 99%;
     height: 95%;
-    background-color: #333;// var(--theme);
-    //position: relative;
+    background-color: var(--theme);
     box-sizing: border-box;
     padding: 5%;
 
@@ -104,7 +103,7 @@ const View = styled.div`
         font-size: 110%;
     }
     div {
-        background-color: white;
+        background-color: var(--theme-back);;
         position: relative;
         display: flex;
         justify-content: center;
@@ -138,7 +137,7 @@ const View = styled.div`
         height: 10%;
     }
     .add {
-        color: #888;
+        color: var(--theme-light);;
         font-size: 30px;
         position: absolute;
         right: -35px;

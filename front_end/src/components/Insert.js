@@ -8,11 +8,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function InsertItem() {
   const navigate = useNavigate();
-  const { reload, setDataList, setPage } = useContext(AuthContext);
+  const { reload, setReload, setDataList, setPage } = useContext(AuthContext);
 
   useEffect(() => {
     getOrganizer().then((res) => {
-      console.log(res);
       setDataList(res);
     }).catch(() => {
       navigate("/");
@@ -22,15 +21,15 @@ export default function InsertItem() {
   const [data, setData] = useState({
     code: "",
     name: "",
-    type: 0,
-    unit: 0,
+    type: "",
+    unit: "",
     value: "",
     cost: "",
-    class: 0,
-    subclass: 0,
-    group: 0,
+    class: "",
+    subclass: "",
+    group: "",
     manufacturer: "",
-    table: 0,
+    table: "",
     position: "",
     document: "",
     note: ""
@@ -45,6 +44,7 @@ export default function InsertItem() {
     create(data).then(() => {
       console.log("created");
       setPage("search");
+      setReload(!reload);
     }).catch(e => {
       console.log(e);
     })
@@ -90,7 +90,7 @@ const Insert = styled.form`
   margin: auto;
   width: 99%;
   height: 95%;
-  background-color: #333;// var(--theme);
+  background-color: var(--theme-black);
   box-sizing: border-box;
   padding: 5%;
   display: flex;
@@ -146,7 +146,7 @@ const Insert = styled.form`
     align-items: flex-start;
   }
   select {
-    background-color: #fff;
+    background-color: var(--theme-back);;
     width: calc(100% - 10px);
     height: 100%;
     margin-left: 10px;
@@ -154,7 +154,7 @@ const Insert = styled.form`
     border: none;
   }
   .add {
-    color: #888;
+    color: var(--theme-light);
     font-size: 30px;
     position: absolute;
     right: -35px;

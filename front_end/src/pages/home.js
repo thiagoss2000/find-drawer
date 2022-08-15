@@ -6,12 +6,14 @@ import Menu from "../components/menu";
 import InsertItem from "../components/Insert";
 import SearchContain from "../components/search";
 import { useNavigate } from "react-router-dom";
-import { getFewItens } from "../services/api/drawers";
+import { getDrawer, getFewItens } from "../services/api/drawers";
 import ViewIten from "../components/view";
+import ViewGroup from "../components/viewGroups";
+import ViewTable from "../components/viewTables";
 
 export default function Home() {  
   const navigate = useNavigate();
-  const { page, reload, setFewItens } = useContext(AuthContext);
+  const { page, reload, setFewItens, setListDrawers } = useContext(AuthContext);
 
   useEffect(() => {
     if (!localStorage.tokenUser) return navigate("/");
@@ -22,7 +24,14 @@ export default function Home() {
       navigate("/");
     })
 
-  }, [page, reload]);
+    getDrawer().then((res) => {
+      setListDrawers(res);
+    }).catch(e => {
+      console.log(e);
+      navigate("/");
+    })
+
+  }, [reload]);
 
   return (
     <DivHome>
@@ -31,6 +40,8 @@ export default function Home() {
           {page === "search" ? <SearchContain /> : ""}
           {page === "insert" ? <InsertItem /> : ""}
           {page === "view" ? <ViewIten /> : ""}
+          {page === "group" ? <ViewGroup /> : ""}
+          {page === "table" ? <ViewTable /> : ""}
         </Contain>
         <Menu />
     </DivHome>
