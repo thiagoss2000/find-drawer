@@ -17,7 +17,6 @@ export default function Home() {
     if (!localStorage.tokenUser) return navigate("/");
  
     getFewItens().then((res) => {
-      console.log(res);
       setFewItens(res);
     }).catch(() => {
       navigate("/");

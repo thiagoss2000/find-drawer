@@ -1,23 +1,8 @@
 import { useContext } from "react";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { getDrawer } from "../services/api/drawers";
 import { AuthContext } from "../temp/context";
 
 export default function SearchContain() {
   const { listDrawers, setListDrawers, setListView, setPage } = useContext(AuthContext);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    getDrawer().then((res) => {
-      console.log(res);
-      setListDrawers(res);
-    }).catch(e => {
-      console.log(e);
-      navigate("/");
-    })
-  }, []);
 
     return (
       <>

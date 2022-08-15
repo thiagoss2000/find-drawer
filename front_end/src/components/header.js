@@ -14,7 +14,6 @@ export default function Header() {
       <button className="group">Groups</button>
       <button>Drawers</button>
       <button onClick={() => setPage("insert")}>New</button>
-      <input/>
       <h2>{userName}</h2>
       <button onClick={() => {logout(); setReload(!reload)}} className="logout"><MdLogout className="iconLogout"/></button>
     </DivHeader>
@@ -33,12 +32,6 @@ const DivHeader = styled.div`
     width: 10%;
     height: 80%;
     margin-inline-start: 40px;
-  }
-  input {
-    width: 20%;
-    height: 70%;
-    position: absolute;
-    left: 40%;
   }
   h2 {
     position: absolute;

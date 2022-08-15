@@ -49,3 +49,37 @@ export interface authTable {
 export async function updateDrawer(credential: authTable, editData: editDrawer) {
     await prisma.drawers.updateMany({where: credential, data: editData});
 }
+
+export interface authFindGroup {
+    user_id: number;
+    group_id: number;
+}
+export async function findDrawerGroup(credential: authFindGroup) {
+    return await prisma.drawers.findMany({
+        where: credential, include:{
+            types: {select: {name: true}},
+            units: {select: {name: true}},
+            classes: {select: {name: true}},
+            subclasses: {select: {name: true}},
+            groups: {select: {name: true}},
+            tables: {select: {name: true}},
+        }
+    });
+}
+
+export interface authFindTable {
+    user_id: number;
+    table_id: number;
+}
+export async function findDrawerTable(credential: authFindTable) {
+    return await prisma.drawers.findMany({
+        where: credential, include:{
+            types: {select: {name: true}},
+            units: {select: {name: true}},
+            classes: {select: {name: true}},
+            subclasses: {select: {name: true}},
+            groups: {select: {name: true}},
+            tables: {select: {name: true}},
+        }
+    });
+}

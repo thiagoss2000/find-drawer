@@ -6,7 +6,7 @@ export async function postData(req: Request, res: Response) {
         code,name,type,unit,value,cost,class: classes,
         subclass: subclasses,group,manufacturer,table,
         position,document,note
-    } = req.body.name;
+    } = req.body;
     const userId = res.locals.user.id;
 
     const data = {
@@ -26,10 +26,8 @@ export async function postData(req: Request, res: Response) {
         document: document,
         note: note,
     }
-    await drawerService.newDrawer(data);
 
-    console.log(req.body);
-    console.log(group);
+    await drawerService.newDrawer(data);
 
     res.sendStatus(201);
 }
@@ -54,9 +52,27 @@ export async function searchFew(req: Request, res: Response) {
 export async function updateDrawer(req: Request, res: Response) {
     const userId = res.locals.user.id;
     const drawerId = req.query.id.toString();
-    const data = req.body.data;
-    
+    const data = req.body;
+
     await drawerService.updateDrawer(parseInt(drawerId), userId, data);
 
     res.sendStatus(200);
+}
+
+export async function searchDrawerGroup(req: Request, res: Response) {
+    const userId = res.locals.user.id;
+    const groupId = req.query.id.toString();
+    
+    const data = await drawerService.searchDrawerGroup(parseInt(groupId), userId);
+
+    res.send(data);
+}
+
+export async function searchDrawerTable(req: Request, res: Response) {
+    const userId = res.locals.user.id;
+    const tableId = req.query.id.toString();
+    
+    const data = await drawerService.searchDrawerTable(parseInt(tableId), userId);
+
+    res.send(data);
 }

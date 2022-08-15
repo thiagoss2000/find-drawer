@@ -104,7 +104,6 @@ const Insert = styled.form`
   }
 
   input {
-    /* position: absolute; */
     width: calc(100% - 10px);
     height: 100%;
     margin-left: 10px;

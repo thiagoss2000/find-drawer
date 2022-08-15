@@ -5,7 +5,6 @@ import { AuthContext } from "../temp/context";
 export default function Menu() {
 
   const { fewItens } = useContext(AuthContext);
-  console.log(fewItens)
 
   return (
     <Menubar>
