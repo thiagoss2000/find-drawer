@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id Int @id @default(autoincrement())
+  user_name String @unique
+  password String
+  sessions sessions[]
+  drawers drawers[]
+}
+
+model sessions {
+  id Int @id @default(autoincrement())
+  token String @unique
+  user_id Int
+  created_at DateTime @default(now())
+  deleted_at DateTime?
+  users users @relation(fields: [user_id], references: [id])
+}
+
+model drawers {
+  id Int @id @default(autoincrement())
+  user_id Int
+  code Int
+  name String
+  value String?
+  cost Int?
+  manufacturer String?
+  document String?
+  note String?
+  position String?
+  qtd Int @default(0)
+  type_id Int
+  unit_id Int
+  class_id Int
+  subclass_id Int
+  group_id Int
+  table_id Int
+  users users @relation(fields: [user_id], references: [id])
+  types types @relation(fields: [type_id], references: [id])
+  units units @relation(fields: [unit_id], references: [id])
+  classes classes @relation(fields: [class_id], references: [id])
+  subclasses subclasses @relation(fields: [subclass_id], references: [id])
+  groups groups @relation(fields: [group_id], references: [id])
+  tables tables @relation(fields: [table_id], references: [id])
+}
+
+model types {
+  id Int @id @default(autoincrement())
+  name String
+  user_id Int
+  @@unique([name, user_id])
+  drawers drawers[]
+}
+
+model units {
+  id Int @id @default(autoincrement())
+  name String
+  user_id Int
+  @@unique([name, user_id])
+  drawers drawers[]
+}
+
+model classes {
+  id Int @id @default(autoincrement())
+  name String
+  user_id Int
+  @@unique([name, user_id])
+  drawers drawers[]
+}
+
+model subclasses {
+  id Int @id @default(autoincrement())
+  name String
+  user_id Int
+  @@unique([name, user_id])
+  drawers drawers[]
+}
+
+model groups {
+  id Int @id @default(autoincrement())
+  name String
+  user_id Int
+  @@unique([name, user_id])
+  drawers drawers[]
+}
+
+model tables {
+  id Int @id @default(autoincrement())
+  name String
+  user_id Int
+  @@unique([name, user_id])
+  drawers drawers[]
+}

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "drawers" ADD COLUMN     "qtd" INTEGER NOT NULL DEFAULT 0;
